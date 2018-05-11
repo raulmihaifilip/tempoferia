@@ -61,8 +61,7 @@ class Holiyear{
       var count = 0;
       for (let holiday of this.holidays)
       {
-          if (isWorkingDay(holiday.targetDate)
-          {
+          if (isWorkingDay(holiday.targetDate)){
               count++;
           }
       }
