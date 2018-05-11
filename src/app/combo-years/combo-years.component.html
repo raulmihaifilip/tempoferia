@@ -1,0 +1,8 @@
+<h2>
+  <span>Choose a year:&nbsp;&nbsp;&nbsp;</span>
+  <select [(ngModel)]="currentYear" (change)="selectYear()">
+    <option *ngFor="let year of years" [value]="year">
+      {{year}}
+    </option>
+</select>
+</h2>

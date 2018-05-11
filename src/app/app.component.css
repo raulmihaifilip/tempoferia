@@ -1,0 +1,13 @@
+.container{
+text-align:center;
+display:flex; 
+flex-direction: column;
+}
+
+ul, ol{
+margin:auto;
+}
+
+li{
+    text-align:left;
+}

@@ -1,43 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="container">
   <h1>
     Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Cele 12 zile libere în 2018 sunt:</h2>
-
-<ul>
-  <li>
-    1 ianuarie, 2 ianuarie — Anul Nou
-  </li>
-  <li>
-    24 ianuarie — Ziua Unirii Principatelor Române
-  </li>
-  <li>
-    8 aprilie 2018 (duminică), 9 aprilie (luni) — Paștele
-  </li>
-  <li>
-    1 mai — Ziua Muncii
-  </li>
-  <li>
-    27 mai (duminică), 28 mai (luni) — Rusalii
-  </li>
-  <li>
-    1 iunie - Ziua Copilului
-  </li>
-  <li>
-    15 august — Adormirea Maicii Domnului
-  </li>
-  <li>
-    30 noiembrie — Sfântul Andrei
-  </li>
-  <li>
-    1 decembrie — Ziua Națională a României
-  </li>
-  <li>
-    25 decembrie, 26 decembrie — Crăciunul
-  </li>
-</ul>
+  </h1>  
+<app-combo-years (yearChanged)="yearChangedHandler($event)"></app-combo-years>
+<h3>Holidays in {{holiyear.year}}:</h3>
+<ol>
+  <li *ngFor="let holiday of holiyear.holidays">
+     {{holiday.toString()}}</li>
+</ol>
+<h4>
+  <span>Needed: {{holiyear.getEffectiveHolidaysCount()}}</span>
+  <span style="margin-left:20px">Redundant: {{holiyear.holidays.length -  holiyear.getEffectiveHolidaysCount()}}</span>
+  </h4>
 
 <router-outlet></router-outlet>
+</div>
