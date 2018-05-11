@@ -3,12 +3,30 @@
   <h1>
     Welcome to {{ title }}!
   </h1>  
-<app-combo-years (yearChanged)="yearChangedHandler($event)"></app-combo-years>
-<h3>Holidays in {{holiyear.year}}:</h3>
-<ol>
+<app-combo-years (yearChanged)="yearChangedHandler($event)"
+(formatChanged)="formatChangedHandler($event)"></app-combo-years>
+
+<h3>Holidays in Romania in {{holiyear.year}}:</h3>
+
+<ul *ngIf="format === 'list'">
   <li *ngFor="let holiday of holiyear.holidays">
      {{holiday.toString()}}</li>
-</ol>
+</ul>
+
+<table *ngIf="format === 'table'">
+  <tr>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Day of Week</th>   
+    <th>Utility</th>    
+  </tr>
+    <tr *ngFor="let holiday of holiyear.holidays">
+      <td>{{holiday.targetDate | date:'d MMMM'}}</td>
+      <td>{{holiday.name}}</td>
+      <td>{{holiday.targetDate | date:'EEEE'}}</td>
+      <td>{{holiday.getUtilityLabel()}}</td>
+      </tr>
+    </table>
 <h4>
   <span>Needed: {{holiyear.getEffectiveHolidaysCount()}}</span>
   <span style="margin-left:20px">Redundant: {{holiyear.holidays.length -  holiyear.getEffectiveHolidaysCount()}}</span>

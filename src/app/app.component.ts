@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {getOrthodoxEaster, addDays, isWorkingDay} from 'src/utils/dateUtil';
-import 'src/extensions/date';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,16 @@ import 'src/extensions/date';
 export class AppComponent {
   title = 'Tempoferias';  
   holiyear:Holiyear;
+  format:string;
 
   yearChangedHandler(year:number)
 {  
   this.holiyear =  new Holiyear(year);  
 }
+formatChangedHandler(format:string){
+  this.format = format;
+}
+
 }
 
 class Holiday{
@@ -26,7 +31,8 @@ class Holiday{
   }
 
   toString(){
-    return `${this.targetDate.toLocaleDateString()} | ${this.name} | ${this.targetDate.getWeekDay()} | ${this.getUtilityLabel()}`;
+    var momentDate = moment(this.targetDate);
+    return `${momentDate.format("D MMMM")}, ${this.name}, ${momentDate.format("dddd")}, ${this.getUtilityLabel()}`;
   }
 }
 

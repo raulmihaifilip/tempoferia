@@ -6,3 +6,13 @@
     </option>
 </select>
 </h2>
+<div>
+    <span>View as:&nbsp;&nbsp;&nbsp;</span>
+    <select [(ngModel)]="currentFormat" (change)="selectFormat()">
+      <option *ngFor="let format of formats" [value]="format">
+        {{format}}
+      </option>
+  </select>
+</div>
+
+
