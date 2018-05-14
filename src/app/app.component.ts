@@ -8,7 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tempoferias';  
+  title = 'Tempoferia';  
   holiyear:Holiyear;
   format:string;
 
@@ -19,7 +19,6 @@ export class AppComponent {
 formatChangedHandler(format:string){
   this.format = format;
 }
-
 }
 
 class Holiday{
@@ -27,7 +26,7 @@ class Holiday{
   constructor(public name:string, public  targetDate:Date){} 
 
   getUtilityLabel(){
-    return isWorkingDay(this.targetDate)? 'needed' : 'redundant';
+    return isWorkingDay(this.targetDate)? 'Useful' : 'Useless';
   }
 
   toString(){
